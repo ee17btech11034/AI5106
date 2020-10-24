@@ -2,15 +2,15 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 
-x = np.linspace(-15,10,200)
-D = np.array([2,5])    #directional vector  D = np.array([a, b])
+x = np.linspace(-8,7,100)
+n = np.array([2,5])    #directional vector  n = np.array([a, b])
 A = np.array([-7,3])   #given first vector
 B = np.array([5,-11])  #given second vector
                         #X = np.array([x,y])   vector line passing through
-                        # equation of line D^T X  = c 
+                        # equation of line n^T X  = c 
                         # parellel so directional vector will be same for both
 M = (A + B)/2           # passing through mid point of A and B
-c = np.dot(D, M)        # M will satisfy that equation
+c = np.dot(n, M)        # M will satisfy that equation
 print('M = ', M)
 print(c)
 
