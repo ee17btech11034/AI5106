@@ -162,15 +162,22 @@ Find the equation of a line parallel to \begin{pmatrix} 2 & 5 \end{pmatrix}\vec{
 \section{Explanation}
 General equation of straight line is given by:\\
 \begin{align}
-    \vec{D}^T \vec{x} = c 
+    \vec{n}^T \vec{x} = c 
 \end{align}   
 \vspace{0.5 cm}
-\vec{D} will be same because both lines are parallel. Passing through mid point \vec{M} of \vec{A}, \vec{B}:
+\vec{n} will be same because both lines are parallel. \\
+\begin{align}
+    \vec{n} = \begin{pmatrix} 2  \\ 5 \end{pmatrix}
+\end{align}
+Passing through mid point \vec{M} of \vec{A}, \vec{B}:
 \begin{align}
   \vec{M} = \frac{ \vec{A} + \vec{B}}{2}
 \end{align}
 \begin{align}
-    \vec{D}^T \vec{M} = c
+    \vec{n}^T (\vec{x} - \vec{M}) = 0 
+\end{align}
+\begin{align}
+    \vec{n}^T \vec{x} = \vec{n}^T \vec{M} 
 \end{align}
 
 \section{Solution}
@@ -178,9 +185,8 @@ So, the mid point \vec{M} is :
 \begin{align}
    \vec{M} = \frac{\begin{pmatrix} -7  \\ 3 \end{pmatrix} + \begin{pmatrix} 5 \\ -11 \end{pmatrix}}{2}  = \begin{pmatrix} -1  \\ -4 \end{pmatrix}  
 \end{align}
-Constant of line is :
 \begin{align}
-   c =  \begin{pmatrix} 2 & 5 \end{pmatrix}\begin{pmatrix} -1  \\ -4 \end{pmatrix} = -22
+   \vec{n}^T \vec{x} =  \begin{pmatrix} 2 & 5 \end{pmatrix}\begin{pmatrix} -1  \\ -4 \end{pmatrix} = -22
 \end{align}
 So, the equation of line is :
 \begin{align}
