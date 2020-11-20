@@ -162,22 +162,40 @@ Find the equation of a circle that passes through the points  \begin{pmatrix} 1 
 \section{Explanation}
 General equation of circle is given by:\\
 \begin{align}
-    \vec{x}^T \vec{x} -2 \vec{C}^T \vec{x} + c = 0 
+    \vec{x}^T \vec{x} -2 \vec{c}^T \vec{x} + f = 0 
 \end{align}   
-Circle is passing through points $\vec{P}, \vec{Q}, \vec{R}$. So, these points will satisfy the circle equation. We can create a determinant  :
+$\vec{c}$ is the centre. Circle is passing through points $\vec{P}, \vec{Q}, \vec{R}$, so substituting these in circle equation
 \begin{align}
-    \begin{vmatrix} x^2 + y^2 & x & y & 1\\ x_{1}^2 + y_{1}^2 & x_{1} & y_{1} & 1\\  x_{2}^2 + y_{2}^2 & x_{2} & y_{2} & 1 \\  x_{3}^2 + y_{3}^2 & x_{3} & y_{3} & 1 \end{vmatrix}
+    2 \begin{pmatrix} 1 & 2 \end{pmatrix} \vec{c} -f &= 5 \\
+    2 \begin{pmatrix} 3 & -4 \end{pmatrix} \vec{c} -f &= 25 \\
+    2 \begin{pmatrix} 5 & -6 \end{pmatrix} \vec{c} -f &= 61
 \end{align}
-$M_{ij}$ is the minor $i^_{th}$ row and $j^_{th}$ column of above determinant. $\vec{C}$ is the centre of circle:\\
+can be expressed as 
 \begin{align}
-    \vec{C} = \frac{1}{2M_{11}}\begin{pmatrix}  M_{12} \\ -M_{13} \end{pmatrix} \\
-    c = \frac{-M_{14}}{M_{11}}
+    \begin{pmatrix} 2 & 4 & -1 \\ 6 & -8 & -1 \\ 10 & -12 & -1 \end{pmatrix} \begin{pmatrix} \vec{c} \\ f \end{pmatrix} = \begin{pmatrix} 5 \\ 25 \\ 61 \end{pmatrix}
 \end{align}
+
+Row reducing the augmented matrix
+\begin{align*}
+    \begin{pmatrix} 2 & 4 & -1 & 5 \\ 6 & -8 & -1 & 25 \\ 10 & -12 & -1 & 61  \end{pmatrix} 
+     \begin{array}{c}
+     \genfrac{}{}{0pt}{0}{R_2 \rightarrow R_2 - 3 R_1}{R_3 \rightarrow R_3 - 5 R_1} \\  \longleftrightarrow
+     \end{array}
+    \begin{pmatrix} 2 & 4 & -1 & 5 \\ 0 & -20 & 2 & 10 \\ 0 & -32 & 4 & 36  \end{pmatrix} \\
+    \begin{array}{c}
+     \genfrac{}{}{0pt}{0}{R_1 \rightarrow R_1 + \frac{1}{5} R_2}{R_3 \rightarrow R_3 - \frac{8}{5} R_2} \\  \longleftrightarrow
+     \end{array}
+    \begin{pmatrix} 2 & 0 & -\frac{3}{5} & 7 \\ 0 & -20 & 2 & 10 \\ 0 & 0 & \frac{4}{5} & 20  \end{pmatrix} \\
+    \begin{array}{c}
+     \genfrac{}{}{0pt}{0}{R_1 \rightarrow R_1 + \frac{3}{4} R_3}{R_2 \rightarrow R_2 - \frac{5}{2} R_3} \\  \longleftrightarrow
+     \end{array}
+    \begin{pmatrix} 2 & 0 & 0 & 22 \\ 0 & -20 & 0 & -40 \\ 0 & 0 & \frac{4}{5} & 20  \end{pmatrix}
+\end{align*}
 \section{Solution}
 So, the centre of circle is :
 \begin{align}
-   \vec{C} = \frac{1}{2*8} \begin{pmatrix}  176 \\ -32 \end{pmatrix} = \begin{pmatrix}  11 \\ 2 \end{pmatrix}  \\
-    c = \frac{-1*(-200)}{8} = 25 
+   \vec{c} = \begin{pmatrix}  \frac{22}{2} \\ \frac{-40}{-20} \end{pmatrix} = \begin{pmatrix}  11 \\ 2 \end{pmatrix}  \\
+    f = \frac{20}{\frac{4}{5}} = 25 
 \end{align}
 Equation of circle is:
 \begin{align}
