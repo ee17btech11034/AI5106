@@ -1,48 +1,48 @@
 import math
 import numpy as np
-import csv
 import matplotlib.pyplot as plt 
-from sympy import *
+from numpy import linalg as LA
 
-(x1,y1) = (1,2)   #point P
-(x2,y2) = (3,-4)  #point Q
-(x3,y3) = (5,-6)  #point R
+P = np.array(([1,2]))
+Q = np.array(([3,-4]))
+R = np.array(([5,-6]))
+C = np.array([11,2])
+f = 25
+r = np.sqrt((np.linalg.norm(C))**2 - f)
 
-P = np.array([x1,y1])
-Q = np.array([x2,y2])
-R = np.array([x3,y3])
+def circ_gen(C,r):
+	len = 50
+	theta = np.linspace(0,2*np.pi,len)
+	x_circ = np.zeros((2,len))
+	x_circ[0,:] = r*np.cos(theta)
+	x_circ[1,:] = r*np.sin(theta)
+	x_circ = (x_circ.T + C).T
+	return x_circ
 
-x = np.linspace(1, 21, 1000)
+##Generating the circle
+x_circ= circ_gen(C,r)
 
-# making augmented matrix
-M =[[2*x1, 2*y1, -1, (np.linalg.norm(P))**2], [2*x2, 2*y2, -1, (np.linalg.norm(Q))**2], [2*x3, 2*y3, -1, (np.linalg.norm(R))**2]]
-M1 = Matrix(M)
-M_rred = M1.rref() 
 
-g = -1*M_rred[0][3] 
-f = -1*M_rred[0][7]
-k = M_rred[0][11]
+#Plotting the circle
+plt.plot(x_circ[0,:],x_circ[1,:],label='$circle$')
 
-k1 = 2 + np.sqrt((100 - (x-11)**2)) 
-k2 = 2 - np.sqrt((100 - (x-11)**2)) 
-fig, ax = plt.subplots()
-ax.set_aspect(1)
 
-print("Centre of Circle: ",(-g,-f))
+#Labeling the coordinates
+tri_coords = np.vstack((P,Q,R,C)).T
+plt.scatter(tri_coords[0,:], tri_coords[1,:])
+vert_labels = ['P(1,2)','Q(3,-4)','R(5,6)','C(11,2)']
+for i, txt in enumerate(vert_labels):
+    plt.annotate(txt, # this is the text
+                 (tri_coords[0,i], tri_coords[1,i]), # this is the point to label
+                 textcoords="offset points", # how to position the text
+                 xytext=(0,10), # distance from text to points (x,y)
+                 ha='center') # horizontal alignment can be left, right or center
 
-plt.annotate("P(1,2)", (x1,y1))
-plt.annotate("Q(3,-4)", (x2,y2))
-plt.annotate("R(5,-6)", (x3,y3))
-plt.annotate("C(11,2)", (11,2))
-plt.plot(x1,y1,'o')
-plt.plot(x2,y2,'o')
-plt.plot(x3,y3,'o')
-plt.plot(11,2,'o')
-plt.plot(x,k1,'y',label='x^T x - 2 (11  2)x + 25 = 0')
-plt.plot(x,k2,'y')
-
-plt.xlim(-1,23)
-plt.ylim(-10,15)
-plt.legend(loc='upper right')
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.legend(loc='best')
+plt.grid() # minor
+plt.axis('equal')
 
 plt.show()
+
