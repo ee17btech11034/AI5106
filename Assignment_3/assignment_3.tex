@@ -160,6 +160,7 @@ https://github.com/ee17btech11034/AI5106/blob/main/Assignment_3/assignment_3.tex
 \def\foo AA{$\myvec{1 \\2}$, $\myvec{3 \\-4}$ and $\myvec{5 \\ -6}$.}
 Find the equation of a circle that passes through the points \foo AA
 
+
 \section{Explanation}
 General equation of circle is given by:\\
 \begin{align}
@@ -167,40 +168,34 @@ General equation of circle is given by:\\
 \end{align}   
 $\vec{c}$ is the centre. Circle is passing through points $\vec{P}, \vec{Q}, \vec{R}$, so substituting these in circle equation
 \begin{align}
-    2 \begin{pmatrix} 1 & 2 \end{pmatrix} \vec{c} -f &= 5 \\
-    2 \begin{pmatrix} 3 & -4 \end{pmatrix} \vec{c} -f &= 25 \\
-    2 \begin{pmatrix} 5 & -6 \end{pmatrix} \vec{c} -f &= 61
+    2\myvec{1 & 2} \vec{c} -f &= 5 \\
+    2\myvec{3 & -4} \vec{c} -f &= 25 \\
+    2 \myvec{5 & -6} \vec{c} -f &= 61
 \end{align}
 can be expressed as 
 \begin{align}
-    \begin{pmatrix} 2 & 4 & -1 \\ 6 & -8 & -1 \\ 10 & -12 & -1 \end{pmatrix} \begin{pmatrix} \vec{c} \\ f \end{pmatrix} = \begin{pmatrix} 5 \\ 25 \\ 61 \end{pmatrix}
+    \myvec{ 2 & 4 & -1 \\ 6 & -8 & -1 \\ 10 & -12 & -1 } \myvec{ \vec{c} \\ f } = \myvec{ 5 \\ 25 \\ 61 }
 \end{align}
 
 Row reducing the augmented matrix
 \begin{align}
-    \begin{pmatrix} 2 & 4 & -1 & 5 \\ 6 & -8 & -1 & 25 \\ 10 & -12 & -1 & 61  \end{pmatrix} \\
-     \begin{array}{c}
-     \genfrac{}{}{0pt}{0}{R_2 \rightarrow R_2 - 3 R_1}{R_3 \rightarrow R_3 - 5 R_1} \\  \longleftrightarrow
-     \end{array}
-    \begin{pmatrix} 2 & 4 & -1 & 5 \\ 0 & -20 & 2 & 10 \\ 0 & -32 & 4 & 36  \end{pmatrix} \\
-    \begin{array}{c}
-     \genfrac{}{}{0pt}{0}{R_1 \rightarrow R_1 + \frac{1}{5} R_2}{R_3 \rightarrow R_3 - \frac{8}{5} R_2} \\  \longleftrightarrow
-     \end{array}
-    \begin{pmatrix} 2 & 0 & -\frac{3}{5} & 7 \\ 0 & -20 & 2 & 10 \\ 0 & 0 & \frac{4}{5} & 20  \end{pmatrix} \\
-    \begin{array}{c}
-     \genfrac{}{}{0pt}{0}{R_1 \rightarrow R_1 + \frac{3}{4} R_3}{R_2 \rightarrow R_2 - \frac{5}{2} R_3} \\  \longleftrightarrow
-     \end{array}
-    \begin{pmatrix} 2 & 0 & 0 & 22 \\ 0 & -20 & 0 & -40 \\ 0 & 0 & \frac{4}{5} & 20  \end{pmatrix}
+    \myvec{ 2 & 4 & -1 & 5 \\ 6 & -8 & -1 & 25 \\ 10 & -12 & -1 & 61  } \\
+    \xleftrightarrow[R_2 \rightarrow R_2 - 3 R_1]{R_3 \rightarrow R_3 - 5 R_1}
+    \myvec{ 2 & 4 & -1 & 5 \\ 0 & -20 & 2 & 10 \\ 0 & -32 & 4 & 36 } \\
+    \xleftrightarrow[R_1 \rightarrow R_1 + \frac{1}{5} R_2]{R_3 \rightarrow R_3 - \frac{8}{5} R_2}
+    \myvec{ 2 & 0 & -\frac{3}{5} & 7 \\ 0 & -20 & 2 & 10 \\ 0 & 0 & \frac{4}{5} & 20  } \\
+    \xleftrightarrow[R_1 \rightarrow R_1 + \frac{3}{4} R_3]{R_2 \rightarrow R_2 - \frac{5}{2} R_3}
+    \myvec{ 2 & 0 & 0 & 22 \\ 0 & -20 & 0 & -40 \\ 0 & 0 & \frac{4}{5} & 20  }
 \end{align}
 \section{Solution}
 So, the centre of circle is :
 \begin{align}
-   \vec{c} = \begin{pmatrix}  \frac{22}{2} \\ \frac{-40}{-20} \end{pmatrix} = \begin{pmatrix}  11 \\ 2 \end{pmatrix}  \\
+   \vec{c} = \myvec{  \frac{22}{2} \\ \frac{-40}{-20} } = \myvec{  11 \\ 2 }  \\
     f = \frac{20}{\frac{4}{5}} = 25 
 \end{align}
 Equation of circle is:
 \begin{align}
-    \vec{x}^T \vec{x} -2\begin{pmatrix}  11 & 2 \end{pmatrix} \vec{x} + 25 = 0 
+    \vec{x}^T \vec{x} -2\myvec{  11 & 2 } \vec{x} + 25 = 0 
 \end{align}
 \begin{figure}[t]
     \centering
